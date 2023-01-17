@@ -7,9 +7,9 @@ const app = express()
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
 }))
-// app.engine('handlebars', engine());
 app.set('view engine', 'handlebars')
-// app.set('views', './views')
+
+app.use(express.static(__dirname + '/public'))
 
 const port = process.env.PORT || 3000
 
