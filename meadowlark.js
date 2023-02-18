@@ -5,6 +5,8 @@ const handlers = require('./lib/handlers')
 
 const app = express()
 
+// app.disable('x-powered-by')
+
 app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
 }))
@@ -17,6 +19,13 @@ const port = process.env.PORT || 3000
 app.get('/', handlers.home)
 
 app.get('/about', handlers.about)
+
+app.get('/headers', (req, res) => {
+  res.type('text/plain')
+  const headers = Object.entries(req.headers)
+    .map(([key, value]) => `${key} ${value}}`)
+  res.end(headers.join('\n'))
+})
 
 // 404
 app.use(handlers.notFound)
