@@ -16,7 +16,7 @@ afterEach(() => {
 })
 
 test('home page links to about page', async () => {
-  jest.setTimeout(50000)
+  // jest.setTimeout(50000)
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.goto(`http://localhost:${port}`)

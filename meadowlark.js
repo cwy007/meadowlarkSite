@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const handlers = require('./lib/handlers')
