@@ -2,6 +2,7 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
 const handlers = require('./lib/handlers')
+const bodyParser = require('body-parser')
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.engine('handlebars', expressHandlebars.engine({
 app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname + '/public'))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 const port = process.env.PORT || 3000
 
