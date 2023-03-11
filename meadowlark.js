@@ -22,7 +22,7 @@ app.engine('handlebars', expressHandlebars.engine({
 app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname + '/public'))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(weatherMiddleware)
 
 const port = process.env.PORT || 3000
@@ -39,6 +39,11 @@ app.get('/headers', (req, res) => {
 })
 
 app.get('/section-test', handlers.sectionTest)
+
+// handlers for browser-based form submission
+app.get('/newsletter-signup', handlers.newsletterSignup)
+app.post('/newsletter-signup/process', handlers.newsletterSignupProcess)
+app.get('/newsletter-signup/thank-you', handlers.newsletterSignupThankYou)
 
 // 404
 app.use(handlers.notFound)
